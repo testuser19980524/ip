@@ -5,7 +5,7 @@
 <style>
 body {
   margin: 0;
-  background-image: url('background.jpg'); /* 背景画像を指定 */
+  background-image: url('background.jpg');
   background-size: cover;
 }
 
@@ -14,32 +14,35 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  display: flex; /* Added flexbox for better layout */
+  flex-direction: column; /* Stack elements vertically */
 }
 
 .app-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 6列グリッド */
-  grid-gap: 5px; /* アイコン間の隙間 */
-  padding: 100px 20px 20px; /* Added top padding to shift down, adjusted bottom padding */
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 5px;
+  padding: 20px;
   box-sizing: border-box;
-  grid-template-rows: repeat(5, 1fr); /* 5 rows */ /* Changed to 5 rows */
+  grid-template-rows: repeat(5, 1fr);
+  flex-grow: 1; /* Allow the grid to take up available space */
 }
 
 .app {
   width: 100%;
-  height: 80px; /* アイコンの高さ調整 */
+  height: 80px;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 10px; /* テキストサイズ調整 */
+  font-size: 10px;
 }
 
 .icon {
-  width: 60px; /* アイコンサイズ調整 */
+  width: 60px;
   height: 60px;
-  border-radius: 10px; /* 角丸 */
-  background-color: lightpink; /* デフォルトの色 */
+  border-radius: 10px;
+  background-color: lightpink;
 }
 
 /* 色を指定 */
@@ -54,21 +57,21 @@ body {
 .color9 { background-color: #FF4500; }
 .color10 { background-color: #FF0000; }
 
-
 #date-time {
   position: absolute;
   top: 10px;
   left: 10px;
   color: white;
-  background-color: transparent; /* Changed to transparent */
+  background-color: transparent;
   padding: 5px;
+  z-index: 1; /* Ensure it's on top */
 }
 </style>
 </head>
 <body>
   <div class="home-screen">
+    <div id="date-time"></div>  <!-- Moved date-time before app-grid -->
     <div id="app-grid" class="app-grid"></div>
-    <div id="date-time"></div>
   </div>
 
   <script>
@@ -76,7 +79,7 @@ body {
     const dateTime = document.getElementById('date-time');
     const colors = ['.color1', '.color2', '.color3', '.color4', '.color5', '.color6', '.color7', '.color8', '.color9', '.color10'];
 
-    for (let i = 0; i < 30; i++) { // Increased to 30 to fill 5 rows of 6
+    for (let i = 0; i < 30; i++) {
       const app = document.createElement('div');
       app.classList.add('app');
       const icon = document.createElement('div');
