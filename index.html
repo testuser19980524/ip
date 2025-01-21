@@ -20,8 +20,9 @@ body {
   display: grid;
   grid-template-columns: repeat(6, 1fr); /* 6列グリッド */
   grid-gap: 5px; /* アイコン間の隙間 */
-  padding: 20px;
+  padding: 100px 20px 20px; /* Added top padding to shift down, adjusted bottom padding */
   box-sizing: border-box;
+  grid-template-rows: repeat(5, 1fr); /* 5 rows */ /* Changed to 5 rows */
 }
 
 .app {
@@ -59,7 +60,7 @@ body {
   top: 10px;
   left: 10px;
   color: white;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: transparent; /* Changed to transparent */
   padding: 5px;
 }
 </style>
@@ -75,7 +76,7 @@ body {
     const dateTime = document.getElementById('date-time');
     const colors = ['.color1', '.color2', '.color3', '.color4', '.color5', '.color6', '.color7', '.color8', '.color9', '.color10'];
 
-    for (let i = 0; i < 24; i++) {
+    for (let i = 0; i < 30; i++) { // Increased to 30 to fill 5 rows of 6
       const app = document.createElement('div');
       app.classList.add('app');
       const icon = document.createElement('div');
