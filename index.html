@@ -19,27 +19,25 @@ body {
 .app-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr); /* 6列グリッド */
-  grid-gap: 5px; /* アイコン間の隙間 */
+  grid-gap: 2px; /* アイコン間の隙間を調整 */
   padding: 20px;
   box-sizing: border-box;
 }
 
 .app {
   width: 100%;
-  height: 80px; /* アイコンの高さ調整 */
-  border-radius: 10px;
+  height: 70px; /* アイコンの高さを調整 */
+  border-radius: 8px; /* 角丸の大きさを調整 */
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  font-size: 10px; /* テキストサイズ調整 */
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* 影を調整 */
 }
 
 .icon {
-  width: 60px; /* アイコンサイズ調整 */
-  height: 60px;
-  border-radius: 10px; /* 角丸 */
-  background-color: lightpink; /* デフォルトの色 */
+  width: 55px; /* アイコンのサイズを調整 */
+  height: 55px;
+  border-radius: 8px; /* 角丸の大きさを調整 */
 }
 
 /* 色を指定 */
@@ -54,26 +52,15 @@ body {
 .color9 { background-color: #FF4500; }
 .color10 { background-color: #FF0000; }
 
-
-#date-time {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 5px;
-}
 </style>
 </head>
 <body>
   <div class="home-screen">
     <div id="app-grid" class="app-grid"></div>
-    <div id="date-time"></div>
   </div>
 
   <script>
     const appGrid = document.getElementById('app-grid');
-    const dateTime = document.getElementById('date-time');
     const colors = ['.color1', '.color2', '.color3', '.color4', '.color5', '.color6', '.color7', '.color8', '.color9', '.color10'];
 
     for (let i = 0; i < 24; i++) {
@@ -84,9 +71,6 @@ body {
       app.appendChild(icon);
       appGrid.appendChild(app);
     }
-
-    const now = new Date();
-    dateTime.textContent = `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')} ${now.getMonth() + 1}月${now.getDate()}日(${['日', '月', '火', '水', '木', '金', '土'][now.getDay()]}`;
   </script>
 </body>
 </html>
