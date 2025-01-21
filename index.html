@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>iPhone UI Recreation</title>
+<style>
 body {
   margin: 0;
   background-image: url('background.jpg'); /* 背景画像を指定 */
@@ -26,7 +31,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);  This line is removed */
   font-size: 10px; /* テキストサイズ調整 */
 }
 
@@ -58,3 +62,30 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 5px;
 }
+</style>
+</head>
+<body>
+  <div class="home-screen">
+    <div id="app-grid" class="app-grid"></div>
+    <div id="date-time"></div>
+  </div>
+
+  <script>
+    const appGrid = document.getElementById('app-grid');
+    const dateTime = document.getElementById('date-time');
+    const colors = ['.color1', '.color2', '.color3', '.color4', '.color5', '.color6', '.color7', '.color8', '.color9', '.color10'];
+
+    for (let i = 0; i < 24; i++) {
+      const app = document.createElement('div');
+      app.classList.add('app');
+      const icon = document.createElement('div');
+      icon.classList.add('icon', colors[i % colors.length]);
+      app.appendChild(icon);
+      appGrid.appendChild(app);
+    }
+
+    const now = new Date();
+    dateTime.textContent = `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')} ${now.getMonth() + 1}月${now.getDate()}日(${['日', '月', '火', '水', '木', '金', '土'][now.getDay()]}`;
+  </script>
+</body>
+</html>
